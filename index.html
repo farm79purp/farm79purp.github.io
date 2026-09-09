@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>鬼萝莉漫画-鬼萝莉漫画类型与阅读指南</title>
+  <meta name="description" content="鬼萝莉漫画是融合惊悚与可爱元素的独特类型漫画，这里全面解读其魅力所在、代表作品风格、适读人群，并提供快速上手阅读指南与常见问题解答。">
+  <meta name="keywords" content="鬼萝莉漫画,鬼萝莉,灵异萝莉,恐怖漫画,萝莉漫画,漫画推荐,阅读指南">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #faf3f7;
+      color: #2d2a35;
+      line-height: 1.7;
+      scroll-behavior: smooth;
+    }
+
+    .page-wrapper {
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* 页眉与导航 */
+    .site-header {
+      background: linear-gradient(135deg, #1f1b2e 0%, #3d2c4f 100%);
+      margin: 20px 0 30px;
+      border-radius: 32px 32px 32px 32px;
+      box-shadow: 0 12px 28px rgba(31, 27, 46, 0.3);
+      padding: 18px 28px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid #b39bc0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #f5e9ff;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .brand-icon {
+      font-size: 2rem;
+      filter: drop-shadow(0 0 6px #d5aaff);
+    }
+
+    .brand-name {
+      font-size: 1.3rem;
+      text-shadow: 0 2px 6px #00000050;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 22px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #e7d7ff;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      padding: 6px 8px;
+      border-radius: 50px;
+      transition: 0.25s ease;
+      border-bottom: 2px solid transparent;
+    }
+
+    .nav-links a:hover {
+      background: #6b4a7e;
+      color: #ffffff;
+      border-bottom: 2px solid #e9b8ff;
+      transform: translateY(-1px);
+    }
+
+    /* 首屏 hero */
+    .hero {
+      background: #f9edf5;
+      border-radius: 48px 48px 48px 48px;
+      padding: 40px 30px 45px;
+      margin-bottom: 40px;
+      box-shadow: inset 0 -30px 40px rgba(185, 120, 170, 0.05), 0 8px 20px rgba(0,0,0,0.04);
+      border: 1px solid #e4c8e0;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: #2b1c33;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+      background: linear-gradient(145deg, #4e2b5f, #8c4f78);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-sub {
+      font-size: 1.25rem;
+      color: #4d3b55;
+      max-width: 700px;
+      margin: 0 auto 28px;
+      font-weight: 400;
+      border-bottom: 1px dashed #bb9fbb;
+      padding-bottom: 20px;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .tag {
+      background: #ffffffd9;
+      padding: 8px 16px;
+      border-radius: 100px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #402a4e;
+      box-shadow: 0 4px 8px #b994b914;
+      border: 1px solid #c9a5c4;
+    }
+
+    /* 卡片区块通用 */
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 40px 0 20px;
+      color: #2c1b36;
+      border-left: 8px solid #a15c95;
+      padding-left: 22px;
+      letter-spacing: 0.5px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin: 20px 0 30px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 24px 20px;
+      box-shadow: 0 10px 22px rgba(93, 49, 94, 0.08);
+      transition: 0.2s ease-in-out;
+      border: 1px solid #eed9f0;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 30px rgba(143, 77, 128, 0.15);
+      border-color: #b87fac;
+    }
+
+    .card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+      color: #3d2847;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card p {
+      color: #3f3647;
+      font-size: 0.98rem;
+      margin-bottom: 12px;
+    }
+
+    .mini-list {
+      list-style: none;
+      margin-top: 10px;
+    }
+
+    .mini-list li {
+      padding: 5px 0 5px 28px;
+      position: relative;
+      font-size: 0.95rem;
+    }
+
+    .mini-list li::before {
+      content: "👻";
+      position: absolute;
+      left: 0;
+      top: 2px;
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    /* 步骤区 */
+    .steps-container {
+      background: #f3e3f2;
+      border-radius: 40px;
+      padding: 28px 30px;
+      margin: 20px 0 32px;
+      border: 1px solid #cdb2d4;
+    }
+
+    .step-item {
+      display: flex;
+      gap: 18px;
+      margin: 18px 0;
+      align-items: flex-start;
+    }
+
+    .step-num {
+      background: #5e386b;
+      color: white;
+      min-width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 10px #4b2d5a;
+    }
+
+    .step-content {
+      flex: 1;
+    }
+
+    .step-content h3 {
+      font-size: 1.3rem;
+      margin-bottom: 4px;
+    }
+
+    /* FAQ */
+    .faq-box {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 24px 28px;
+      margin: 30px 0 20px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.03);
+    }
+
+    details {
+      border-bottom: 1px solid #e3d0e2;
+      padding: 16px 4px;
+    }
+
+    summary {
+      font-weight: 600;
+      font-size: 1.1rem;
+      cursor: pointer;
+      color: #43264f;
+      transition: 0.2s;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: "+";
+      font-size: 2rem;
+      color: #864a7e;
+      font-weight: 300;
+    }
+
+    details[open] summary::after {
+      content: "–";
+    }
+
+    .faq-answer {
+      margin-top: 12px;
+      color: #2d2533;
+      padding-left: 8px;
+      border-left: 4px solid #ad7ca3;
+    }
+
+    /* 相关推荐 */
+    .related-panel {
+      background: linear-gradient(120deg, #f1e1f0, #f9efff);
+      border-radius: 40px;
+      padding: 30px;
+      margin: 40px 0;
+      border: 1px solid #dab8dc;
+    }
+
+    .related-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: center;
+    }
+
+    .related-item {
+      background: #ffffffc9;
+      padding: 10px 18px;
+      border-radius: 100px;
+      font-weight: 500;
+      border: 1px solid #b88db0;
+      transition: 0.2s;
+    }
+
+    .related-item:hover {
+      background: #a46f9b;
+      color: white;
+      border-color: #6b3f66;
+    }
+
+    /* 页脚 */
+    .site-footer {
+      margin-top: 40px;
+      background: #2a2133;
+      color: #c6b6cf;
+      padding: 30px 24px;
+      border-radius: 32px 32px 24px 24px;
+      text-align: center;
+      font-size: 0.95rem;
+      border: 1px solid #4f3a5a;
+    }
+
+    .site-footer a {
+      color: #dbb4ff;
+      text-decoration: none;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+
+    /* 响应式 */
+    @media (max-width: 768px) {
+      .site-header {
+        flex-direction: column;
+        gap: 16px;
+        align-items: stretch;
+        text-align: center;
+        border-radius: 28px;
+      }
+      .nav-links {
+        justify-content: center;
+      }
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      .hero-sub {
+        font-size: 1.1rem;
+      }
+      .section-title {
+        font-size: 1.7rem;
+      }
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+      .steps-container {
+        padding: 20px 16px;
+      }
+      .related-panel {
+        padding: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page-wrapper {
+        padding: 0 12px;
+      }
+      .brand-name {
+        font-size: 1.1rem;
+      }
+      .hero {
+        padding: 30px 16px;
+      }
+      .step-item {
+        flex-direction: column;
+      }
+      .step-num {
+        margin-bottom: 6px;
+      }
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+<div class="page-wrapper">
+
+  <!-- 页眉+导航 -->
+  <header class="site-header">
+    <div class="brand">
+      <span class="brand-icon">👻🎀</span>
+      <span class="brand-name">鬼萝莉漫画·异色美学</span>
+    </div>
+    <nav aria-label="主导航">
+      <ul class="nav-links">
+        <li><a href="#intro">何为鬼萝莉</a></li>
+        <li><a href="#types">题材分类</a></li>
+        <li><a href="#guide">阅读指南</a></li>
+        <li><a href="#faq">常见疑问</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- 首屏 -->
+    <section class="hero">
+      <h1>鬼萝莉漫画</h1>
+      <div class="hero-sub">当「幽暗灵异」碰撞「萝莉纯真」，产生独一无二的诡异美学与故事张力。</div>
+      <div class="hero-tags">
+        <span class="tag"># 病娇萝莉</span>
+        <span class="tag"># 灵异和解</span>
+        <span class="tag"># 和风怪谈</span>
+        <span class="tag"># 可爱与恐怖</span>
+      </div>
+      <p style="max-width: 720px; margin: 0 auto; color: #4b3a4f;">鬼萝莉漫画并不是单纯的恐怖漫画，它通常以拥有非人力量或死后怨念的少女为主角，用「萝莉」的柔弱外表包裹「鬼怪」的内核，在惊悚氛围中探讨孤独、执念、友情与救赎。近年已成为独立漫画圈与青年向作品中不可忽视的亚类型。</p>
+    </section>
+
+    <!-- 概念区 -->
+    <section id="intro" aria-label="鬼萝莉漫画定义">
+      <h2 class="section-title">👁️ 什么是鬼萝莉漫画？</h2>
+      <div style="background: #ffffff; border-radius: 32px; padding: 24px; border: 1px solid #ebd0e6;">
+        <p style="font-size: 1.05rem; margin-bottom: 16px;">鬼萝莉漫画最核心的辨识特征是：<strong>主角或重要角色为年龄约6~14岁、具有幽灵/怨灵/妖怪属性的女孩</strong>。她们可能因冤屈无法成佛，或因诅咒而徘徊人间。与一般恐怖漫画不同，这类作品往往将“恐怖氛围”和“萝莉的可爱”融合，形成反差感极强的叙事。</p>
+        <p>常见的设定包括：穿着染血和服的少女、身边跟随式神的神秘萝莉、被封印在古老宅邸的洋娃娃灵魂、亦或是拥有前世记忆的亡灵女孩。她们与人类主角的互动，既可能带来危险，也可能导向治愈系结局。</p>
+      </div>
+    </section>
+
+    <!-- 特色分类卡片 -->
+    <section id="types">
+      <h2 class="section-title">📚 鬼萝莉漫画的三大典型风格</h2>
+      <div class="card-grid">
+        <article class="card">
+          <h3>👘 和风怪谈类</h3>
+          <p>以日本民俗、神隐、咒术为背景。如「座敷童子」或「桥姬」化身萝莉，氛围幽玄。代表作气质多带有《夏目友人帐》的温柔与《地狱少女》的暗冷。</p>
+          <ul class="mini-list">
+            <li>古朴神社与狐狸面具</li>
+            <li>人与鬼的羁绊</li>
+            <li>非恐吓式微恐怖</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>🩸 现代异能类</h3>
+          <p>背景设定在都市校园或秘密机构，鬼萝莉可能是超自然对策课的成员，或者被封印的实验体。节奏较快，常有战斗与阴谋。</p>
+          <ul class="mini-list">
+            <li>反差萌战斗少女</li>
+            <li>组织与秘密</li>
+            <li>黑色幽默点缀</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>🌙 心理悬疑类</h3>
+          <p>着重刻画精神恐惧与心理创伤。鬼萝莉可能只是主角内心阴影的具象化，或循环悲剧的源头。结局常需读者自行解读。</p>
+          <ul class="mini-list">
+            <li>碎片化叙事</li>
+            <li>幻觉与真实边界</li>
+            <li>细思极恐</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- 阅读指南步骤 -->
+    <section id="guide">
+      <h2 class="section-title">🧭 鬼萝莉漫画快速上手指南</h2>
+      <div class="steps-container">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h3>挑选适合的入坑作品</h3>
+            <p>初次接触建议从“轻惊悚、重剧情”的作品开始。例如讲述鬼萝莉与人类少年共同寻找记忆碎片的短篇集，避免过于血腥或精神污染的内容。</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h3>理解鬼萝莉的世界观</h3>
+            <p>大部分作品会交代女孩为何成为幽灵。留意她的执念物（如人偶、铃铛、旧照片），往往是理解故事的关键。</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h3>关注氛围与情感线</h3>
+            <p>鬼萝莉漫画不只是猎奇，更常借“阴阳两隔”探讨离别与思念。阅读时可以多感受画面中的季节意象与背景细节。</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <h3>从短篇到长篇</h3>
+            <p>短篇适合快速了解类型；长篇则能构建更复杂的伏笔。若喜欢单元剧，可寻找每话独立成篇的作品。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 优势/为什么吸引人 -->
+    <section>
+      <h2 class="section-title">✨ 鬼萝莉漫画的独特吸引力</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 18px;">
+        <div style="flex: 1 1 220px; background:#f8ecf5; border-radius: 28px; padding: 24px;">
+          <h3 style="color:#3a2242;">🎭 反差叙事张力</h3>
+          <p>天真面容与恐怖行为/身世的强烈反差，让人物形象鲜明且过目不忘。在漫画中形成独特的“恐惧+怜爱”双重情绪。</p>
+        </div>
+        <div style="flex: 1 1 220px; background:#f8ecf5; border-radius: 28px; padding: 24px;">
+          <h3 style="color:#3a2242;">💔 深度情感内核</h3>
+          <p>许多鬼萝莉故事本质是“失去”与“告别”的寓言。借助灵异元素，能更深刻地刻画悲伤、遗憾与和解。</p>
+        </div>
+        <div style="flex: 1 1 220px; background:#f8ecf5; border-radius: 28px; padding: 24px;">
+          <h3 style="color:#3a2242;">🎨 多样的美术风格</h3>
+          <p>从水彩淡彩到哥特暗黑，鬼萝莉题材给了画师极大的创作空间，常常有极具辨识度的服饰与氛围设计。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <h2 class="section-title">❓ 关于鬼萝莉漫画的常见疑问</h2>
+      <div class="faq-box">
+        <details open>
+          <summary>鬼萝莉漫画适合所有年龄吗？</summary>
+          <div class="faq-answer">不一定。很多作品会涉及灵异、暴力或心理阴影，属于青年向或成人向。建议先查看单行本/平台标注的适龄分级，部分轻松治愈向的可以推荐给较大年龄的青少年。</div>
+        </details>
+        <details>
+          <summary>为什么“鬼萝莉”角色常常带有悲剧色彩？</summary>
+          <div class="faq-answer">因为鬼魂设定本身与“未了的心愿”绑定，而幼年角色更能凸显“本应拥有美好未来却戛然而止”的悲哀，这让故事更容易引发共情，也令人物关系更加动人。</div>
+        </details>
+        <details>
+          <summary>鬼萝莉漫画和普通萝莉漫画有什么不同？</summary>
+          <div class="faq-answer">普通萝莉漫画以日常、可爱、治愈为主。而鬼萝莉漫画一定带有超自然/恐怖元素，萝莉往往并非普通人类，而是夹在生死边界的存在，主题更复杂。</div>
+        </details>
+        <details>
+          <summary>有哪些创作者或平台可以关注？</summary>
+          <div class="faq-answer">许多独立漫画杂志与网络平台均有此类作品。你可以关注“诡异绮谈”类专题，搜索标签#鬼萝莉 #幽霊少女。日本同人展与国产彩色条漫中也有不少优秀作品。</div>
+        </details>
+      </div>
+    </section>
+
+    <!-- 相关主题 -->
+    <aside class="related-panel">
+      <h2 style="font-size: 1.6rem; margin-bottom: 20px; color:#2a1f32; text-align:center;">🔮 你可能还喜欢这些相关主题</h2>
+      <div class="related-grid">
+        <span class="related-item">和风怪谈</span>
+        <span class="related-item">病娇少女</span>
+        <span class="related-item">百鬼夜行</span>
+        <span class="related-item">灵异侦探</span>
+        <span class="related-item">人外娘</span>
+        <span class="related-item">双女主</span>
+        <span class="related-item">都市传说</span>
+        <span class="related-item">悲情催泪</span>
+      </div>
+    </aside>
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="site-footer">
+    <div class="footer-links">
+      <a href="#">关于鬼萝莉百科</a>
+      <a href="#">作品推荐</a>
+      <a href="#">漫画社区</a>
+      <a href="#">风格索引</a>
+    </div>
+    <p style="opacity: 0.9;">© 鬼萝莉漫画 · 仅供爱好者交流与指南。愿你在幽冥与纯真交织的故事中找到感动。</p>
+  </footer>
+
+</div>
+</body>
+</html>
