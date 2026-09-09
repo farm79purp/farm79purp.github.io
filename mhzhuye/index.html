@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>漫画主页-漫画主页大全与优质漫画推荐导航</title>
+    <meta name="description" content="漫画主页是一个集合了热门漫画、经典漫画、最新更新与分类导航的综合性漫画入口，提供漫画推荐、阅读指引与常见问题解答，帮助漫画爱好者快速找到自己的喜爱之作。">
+    <meta name="keywords" content="漫画主页,漫画,漫画推荐,漫画大全,漫画导航,在线漫画,热门漫画">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background-color: #f5f7fa;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        ul {
+            list-style: none;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* Header */
+        .site-header {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: #fff;
+            padding: 16px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-icon {
+            font-size: 28px;
+            background: rgba(255,255,255,0.2);
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .main-nav ul {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+        .main-nav a {
+            color: #e0e7ff;
+            font-weight: 500;
+            padding: 6px 0;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s;
+        }
+        .main-nav a:hover {
+            color: #fff;
+            border-bottom-color: #ffb347;
+        }
+        /* Hero */
+        .hero {
+            background: linear-gradient(145deg, #f0f4ff, #e6ecf7);
+            padding: 60px 0 50px;
+            text-align: center;
+            border-bottom: 1px solid #e3e9f2;
+        }
+        .hero h1 {
+            font-size: 2.6rem;
+            color: #1e3c72;
+            margin-bottom: 16px;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+        .hero p {
+            font-size: 1.15rem;
+            max-width: 720px;
+            margin: 0 auto 30px;
+            color: #3a5a80;
+        }
+        .hero-tags {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .hero-tags span {
+            background: #fff;
+            border-radius: 30px;
+            padding: 8px 20px;
+            font-weight: 600;
+            color: #1e3c72;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            font-size: 0.9rem;
+        }
+        /* Section */
+        .section {
+            padding: 50px 0;
+        }
+        .section-title {
+            font-size: 1.9rem;
+            color: #1e3c72;
+            margin-bottom: 10px;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 8px;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60%;
+            height: 4px;
+            background: #ffb347;
+            border-radius: 2px;
+        }
+        .section-desc {
+            color: #5a6f8a;
+            margin-bottom: 32px;
+            font-size: 1.05rem;
+        }
+        /* Category Cards */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 24px;
+            margin-top: 20px;
+        }
+        .category-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 28px 22px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #eef1f6;
+        }
+        .category-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+        }
+        .category-icon {
+            font-size: 2.5rem;
+            margin-bottom: 14px;
+        }
+        .category-card h3 {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .category-card p {
+            color: #5a6f8a;
+            font-size: 0.95rem;
+        }
+        /* Featured Comics */
+        .comic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        .comic-card {
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+            border: 1px solid #eef1f6;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        .comic-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 30px rgba(0,0,0,0.1);
+        }
+        .comic-cover {
+            height: 160px;
+            background: linear-gradient(135deg, #4a6fa5, #1e3c72);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.7);
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        .comic-cover.gradient-2 { background: linear-gradient(135deg, #e96443, #904e95); }
+        .comic-cover.gradient-3 { background: linear-gradient(135deg, #11998e, #38ef7d); }
+        .comic-cover.gradient-4 { background: linear-gradient(135deg, #fc4a1a, #f7b733); }
+        .comic-cover.gradient-5 { background: linear-gradient(135deg, #396afc, #2948ff); }
+        .comic-cover.gradient-6 { background: linear-gradient(135deg, #c31432, #240b36); }
+        .comic-info {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .comic-info h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            color: #1e3c72;
+        }
+        .comic-info p {
+            font-size: 0.9rem;
+            color: #5a6f8a;
+            flex: 1;
+        }
+        .comic-meta {
+            margin-top: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: #7a8fa8;
+            border-top: 1px solid #f0f3f8;
+            padding-top: 12px;
+        }
+        .comic-status {
+            background: #e8f4fd;
+            color: #1e6bb8;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+        /* Steps Section */
+        .steps-wrap {
+            background: #fff;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+        }
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .step-item {
+            text-align: center;
+            padding: 20px 10px;
+        }
+        .step-num {
+            width: 48px;
+            height: 48px;
+            background: #1e3c72;
+            color: #fff;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        .step-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: #1e3c72;
+        }
+        .step-item p {
+            color: #5a6f8a;
+            font-size: 0.95rem;
+        }
+        /* Advantages */
+        .adv-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+        .adv-item {
+            background: #fff;
+            border-radius: 14px;
+            padding: 24px;
+            border-left: 5px solid #ffb347;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+        }
+        .adv-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: #2c3e50;
+        }
+        .adv-item p {
+            color: #5a6f8a;
+            font-size: 0.95rem;
+        }
+        /* Notice */
+        .notice-box {
+            background: #fff8ed;
+            border-left: 6px solid #f39c12;
+            padding: 24px 28px;
+            border-radius: 12px;
+            margin: 40px 0;
+        }
+        .notice-box h3 {
+            color: #b8740a;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        .notice-box ul {
+            padding-left: 20px;
+            list-style: disc;
+            color: #6b5a3e;
+        }
+        .notice-box li {
+            margin: 8px 0;
+        }
+        /* FAQ */
+        .faq-list {
+            max-width: 860px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            background: #fff;
+            border-radius: 14px;
+            margin-bottom: 16px;
+            padding: 24px 28px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            border: 1px solid #eef1f6;
+        }
+        .faq-item h3 {
+            font-size: 1.1rem;
+            color: #1e3c72;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .faq-item p {
+            color: #5a6f8a;
+            font-size: 0.98rem;
+        }
+        /* CTA */
+        .cta-banner {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            color: #fff;
+            margin: 40px 0;
+        }
+        .cta-banner h2 {
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+        }
+        .cta-banner p {
+            color: #c5d3e8;
+            margin-bottom: 24px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .btn {
+            display: inline-block;
+            background: #ffb347;
+            color: #1e3c72;
+            padding: 12px 36px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background: #ffa726;
+            transform: scale(1.03);
+            box-shadow: 0 8px 20px rgba(255, 167, 38, 0.3);
+        }
+        /* Footer */
+        .site-footer {
+            background: #1a2639;
+            color: #a0b0c8;
+            padding: 40px 0 20px;
+            margin-top: 40px;
+        }
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .footer-col h4 {
+            color: #fff;
+            margin-bottom: 14px;
+            font-size: 1.1rem;
+        }
+        .footer-col ul li {
+            margin: 8px 0;
+        }
+        .footer-col a:hover {
+            color: #ffb347;
+        }
+        .copyright {
+            text-align: center;
+            border-top: 1px solid #2a3a55;
+            padding-top: 20px;
+            font-size: 0.9rem;
+            color: #7a8ba5;
+        }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .main-nav ul {
+                gap: 14px;
+                margin-top: 8px;
+            }
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .section {
+                padding: 35px 0;
+            }
+            .section-title {
+                font-size: 1.6rem;
+            }
+            .steps-wrap {
+                padding: 25px;
+            }
+            .cta-banner {
+                padding: 25px;
+            }
+            .cta-banner h2 {
+                font-size: 1.5rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .category-grid, .comic-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero {
+                padding: 40px 0 35px;
+            }
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            .logo-text {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="logo-area">
+                <div class="logo-icon">📚</div>
+                <span class="logo-text">漫画主页</span>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#home">首页</a></li>
+                    <li><a href="#category">漫画分类</a></li>
+                    <li><a href="#recommend">热门推荐</a></li>
+                    <li><a href="#guide">阅读指南</a></li>
+                    <li><a href="#faq">常见问题</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="hero" id="home">
+            <div class="container">
+                <h1>漫画主页</h1>
+                <p>这里是漫画爱好者的集中地，汇集热门连载、经典完结、日漫国漫等丰富内容。无论你偏爱热血冒险、恋爱日常还是悬疑烧脑，都能在漫画主页找到值得一读的作品。</p>
+                <div class="hero-tags">
+                    <span>🔥 热门连载</span>
+                    <span>⭐ 高分经典</span>
+                    <span>🆕 最新更新</span>
+                    <span>📖 分类齐全</span>
+                    <span>🚀 一键导航</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 分类卡片 -->
+        <section class="section" id="category">
+            <div class="container">
+                <h2 class="section-title">漫画分类导航</h2>
+                <p class="section-desc">丰富的漫画分类，帮助你快速定位感兴趣的领域，节省寻找时间。</p>
+                <div class="category-grid">
+                    <div class="category-card">
+                        <div class="category-icon">⚔️</div>
+                        <h3>热血冒险</h3>
+                        <p>主角成长、伙伴羁绊与战斗冒险，充满激情与感动，适合喜欢燃系故事的你。</p>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-icon">💕</div>
+                        <h3>恋爱校园</h3>
+                        <p>青涩校园恋情与轻松日常，细腻的情感描写，让人会心一笑或怦然心动。</p>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-icon">🌌</div>
+                        <h3>科幻奇幻</h3>
+                        <p>异世界、未来科技、魔法与超能力，想象力丰富，世界观宏大。</p>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-icon">🔍</div>
+                        <h3>悬疑推理</h3>
+                        <p>烧脑反转、环环相扣的谜题，挑战你的逻辑，每一话都值得仔细推敲。</p>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-icon">🏀</div>
+                        <h3>运动竞技</h3>
+                        <p>球场上的汗水与荣耀，团队合作与个人突破，充满青春热血的力量。</p>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-icon">😄</div>
+                        <h3>搞笑日常</h3>
+                        <p>轻松幽默的片段，节奏明快，欢乐不断，适合放松心情时阅读。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 热门推荐 -->
+        <section class="section" id="recommend" style="background:#eef2f8;">
+            <div class="container">
+                <h2 class="section-title">编辑部精选推荐</h2>
+                <p class="section-desc">以下作品是近期人气较高且口碑良好的漫画，值得你花时间细细品味。</p>
+                <div class="comic-grid">
+                    <article class="comic-card">
+                        <div class="comic-cover">星海</div>
+                        <div class="comic-info">
+                            <h3>星海征程</h3>
+                            <p>少年驾驶飞船穿越星海，探索未知文明，热血的宇宙冒险故事。</p>
+                            <div class="comic-meta">
+                                <span class="comic-status">🔥 热播中</span>
+                                <span>科幻 / 冒险</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="comic-card">
+                        <div class="comic-cover gradient-2">恋语</div>
+                        <div class="comic-info">
+                            <h3>恋语轻风</h3>
+                            <p>温柔学妹与傲娇学长的校园日常，轻松甜蜜的恋爱故事。</p>
+                            <div class="comic-meta">
+                                <span class="comic-status">⭐ 高分</span>
+                                <span>恋爱 / 校园</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="comic-card">
+                        <div class="comic-cover gradient-3">灵境</div>
+                        <div class="comic-info">
+                            <h3>灵境行者</h3>
+                            <p>能看见灵体的少年，意外卷入都市灵异事件，揭开尘封的真相。</p>
+                            <div class="comic-meta">
+                                <span class="comic-status">🆕 新作</span>
+                                <span>奇幻 / 悬疑</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="comic-card">
+                        <div class="comic-cover gradient-4">球魂</div>
+                        <div class="comic-info">
+                            <h3>球魂不灭</h3>
+                            <p>高中篮球部逆袭之路，每一次投篮都是对梦想的坚持。</p>
+                            <div class="comic-meta">
+                                <span class="comic-status">🔥 热播中</span>
+                                <span>运动 / 青春</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="comic-card">
+                        <div class="comic-cover gradient-5">迷雾</div>
+                        <div class="comic-info">
+                            <h3>迷雾追踪</h3>
+                            <p>刑警搭档联手破解连环谜案，真相永远藏在细节之中。</p>
+                            <div class="comic-meta">
+                                <span class="comic-status">⭐ 高分</span>
+                                <span>悬疑 / 犯罪</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="comic-card">
+                        <div class="comic-cover gradient-6">笑园</div>
+                        <div class="comic-info">
+                            <h3>笑园日记</h3>
+                            <p>一群性格迥异的学生，在校园里闹出一连串爆笑日常。</p>
+                            <div class="comic-meta">
+                                <span class="comic-status">😄 轻松</span>
+                                <span>搞笑 / 校园</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- 阅读指南 -->
+        <section class="section" id="guide">
+            <div class="container">
+                <h2 class="section-title">如何高效使用漫画主页</h2>
+                <p class="section-desc">漫画主页不仅是漫画的集合，更是一套帮你快速定位好漫画的工具。</p>
+                <div class="steps-wrap">
+                    <div class="steps-grid">
+                        <div class="step-item">
+                            <div class="step-num">1</div>
+                            <h3>明确偏好</h3>
+                            <p>先思考自己今天想看什么类型：热血、恋爱、悬疑还是搞笑？确定大方向。</p>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-num">2</div>
+                            <h3>浏览分类</h3>
+                            <p>点击分类导航卡片，进入对应领域，查看该分类下的热门作品与更新动态。</p>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-num">3</div>
+                            <h3>查看详情</h3>
+                            <p>阅读漫画的简介、标签与读者评价，判断是否符合口味，再决定是否深入阅读。</p>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-num">4</div>
+                            <h3>收藏追更</h3>
+                            <p>将喜欢的漫画加入收藏，及时获取更新提醒，不错过每一话的发布。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 优势与注意事项 -->
+        <section class="section" style="background:#eef2f8;">
+            <div class="container">
+                <h2 class="section-title">漫画主页的优势</h2>
+                <p class="section-desc">一个优秀的漫画主页，应该兼顾内容广度与浏览体验。</p>
+                <div class="adv-list">
+                    <div class="adv-item">
+                        <h3>📂 内容聚合</h3>
+                        <p>将不同平台、不同风格的漫画汇集在一起，节省跨平台寻找的时间。</p>
+                    </div>
+                    <div class="adv-item">
+                        <h3>🏷️ 精细分类</h3>
+                        <p>从题材、热度、状态等维度进行标注，让筛选变得更直观、更有效。</p>
+                    </div>
+                    <div class="adv-item">
+                        <h3>⚡ 及时更新</h3>
+                        <p>热门连载的更新信息会第一时间呈现，方便读者掌握最新进度。</p>
+                    </div>
+                    <div class="adv-item">
+                        <h3>🌟 口碑参考</h3>
+                        <p>通过评分、人气标签等内容，帮助读者在众多作品中快速锁定高质量漫画。</p>
+                    </div>
+                </div>
+
+                <div class="notice-box">
+                    <h3>📌 阅读提示</h3>
+                    <ul>
+                        <li>建议通过正规授权平台阅读漫画，支持创作者持续产出优质内容。</li>
+                        <li>部分漫画更新较慢，请耐心等待，也可以先尝试同类型作品。</li>
+                        <li>漫画主页仅作为导航与信息聚合，具体阅读请跳转至相关正版页面。</li>
+                        <li>保持合理的阅读时长，注意让眼睛适当休息。</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="section" id="faq">
+            <div class="container">
+                <h2 class="section-title" style="display:block; text-align:center; margin-bottom:30px;">常见问题解答</h2>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <h3>Q：漫画主页上的漫画都能免费看吗？</h3>
+                        <p>A：漫画主页是一个导航与推荐页面，本身不直接提供漫画内容。具体是否免费取决于你访问的正版漫画平台。许多平台提供部分免费章节，但完整阅读通常需要购买或订阅。</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Q：如何快速找到类似某部漫画的作品？</h3>
+                        <p>A：可以查看该漫画的标签，例如“热血”“冒险”“恋爱”，然后点击相同标签分类，系统会展示同类风格的作品。你也可以参考“喜欢这部漫画的人也喜欢”的推荐模块。</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Q：漫画更新频率是怎样的？</h3>
+                        <p>A：不同漫画的更新频率差异很大。日更漫画通常每周更新一次，周更漫画则固定在某一天。部分漫画可能因作者原因休刊，请关注各平台的更新公告。</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Q：漫画主页支持手机浏览吗？</h3>
+                        <p>A：完全支持。漫画主页采用响应式设计，在手机、平板和电脑上都能获得良好的浏览体验，方便随时随地查看推荐与分类。</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Q：可以提交漫画推荐吗？</h3>
+                        <p>A：目前漫画主页以编辑推荐和热门内容聚合为主。未来若开放用户推荐功能，会通过公告告知，敬请期待。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="container">
+            <div class="cta-banner">
+                <h2>开始你的漫画发现之旅</h2>
+                <p>从漫画主页出发，探索更多精彩故事。愿你总能找到触动内心的那一部作品。</p>
+                <a href="#recommend" class="btn">浏览热门推荐</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>漫画主页</h4>
+                    <ul>
+                        <li><a href="#home">首页</a></li>
+                        <li><a href="#category">漫画分类</a></li>
+                        <li><a href="#recommend">热门推荐</a></li>
+                        <li><a href="#guide">阅读指南</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>热门分类</h4>
+                    <ul>
+                        <li><a href="#category">热血冒险</a></li>
+                        <li><a href="#category">恋爱校园</a></li>
+                        <li><a href="#category">科幻奇幻</a></li>
+                        <li><a href="#category">悬疑推理</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>友情提示</h4>
+                    <ul>
+                        <li>尊重版权</li>
+                        <li>理性阅读</li>
+                        <li>健康用眼</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 漫画主页 | 仅为漫画信息聚合与推荐导航，所有作品版权归原作者所有。</p>
+            </div>
+        </div>
+    </footer>
+</body>
+  </html>
